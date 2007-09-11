@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ================================================ -->
+<!--  Sample buildfile for jar components             -->
+<!--                                                  -->
+<!-- ================================================ -->
+
+<project name="dbmap" default="build">
+
+    <import file="../ant/emma-macros.xml"/>
+    <import file="../ant/database.xml"/>
+
+    <property name="src.home" value="src"/>
+    <property name="test.home" value="test"/>
+    <property name="test.out" value="test.out"/>
+    <property name="build.home" value="classes"/>
+    <property name="app.name" value="dbmap"/>
+    <property name="dist.home" value="${basedir}/dist"/>
+    <property name="lib" value="lib"/>
+    <property name="checkstyle.jar" value="${lib}/checkstyle-all-4.0-beta2.jar"/>
+
+    <!-- need debug info for emma instrumenting to work -->
+    <property name="compile.debug" value="true"/>
+    <property name="emma.enabled" value="true"/>
+    <property name="emma.instr" value="inst-bin"/>
+    <property name="emma.results" value="${dist.home}"/>
+    <property name="emma.stats" value="${dist.home}/gauntlet-coverage.emma"/>
+    <property name="instr-classes.dir" value="${basedir}/instr-classes"/>
+    <property name="test.db.sql" value="test-data/simplelock.sql"/>
+
+    <path id="project.classpath">
+        <fileset dir="lib" includes="*.jar"/>
+        <fileset dir="../lib" includes="*.jar"/>
+    </path>
+
+    <path id="run.classpath">
+        <pathelement location="${build.home}"/>
+        <path refid="project.classpath"/>
+    </path>
+
+    <path id="test.db.classpath">
+        <fileset dir="../lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- - - - - - - - - - - - - - -->
+    <!--  target: init             -->
+    <!-- - - - - - - - - - - - - - -->
+
+    <target name="init">
+        <echo>
+            running the init target
+            java.version = ${java.version}
+            java.home = ${java.home}
+            src.home = ${src.home}
+            build.home = ${build.home}
+            dist.home = ${dist.home}
+            app.name = ${app.name}
+        </echo>
+    	<!--<fail message="intentionally break the build"/>-->
+    </target>
+
+    <!-- ========================= -->
+    <!--   target: build           -->
+    <!-- ========================= -->
+
+    <target name="build" depends="init,clean,checkstyle,compile,create-test-db,test,drop-test-db,fail-if-junit-failed"
+            description="clean, compile, test"/>
+
+    <!-- **************************************************** -->
+    <!-- Run style check on code -->
+    <!-- **************************************************** -->
+    <target name="checkstyle" depends="init" description="Generates a report of code convention violations.">
+        <taskdef resource="checkstyletask.properties" classpath="${checkstyle.jar}"/>
+        <mkdir dir="target"/>
+        <checkstyle config="checkstyle.xml" failOnViolation="true">
+            <formatter type="plain"/>
+            <formatter type="plain" tofile="${basedir}/checkstyleResults.txt"/>
+            <fileset dir="${src.home}" includes="**/*.java"/>
+            <fileset dir="${test.home}" includes="**/*.java"/>
+        </checkstyle>
+    </target>
+
+   <target name="run" depends="compile" description="compile + run generator">
+      <java classname="com.moonspider.dbmap.Generator" fork="true">
+          <arg value="generate.xml"/>
+            <classpath>
+               <path refid="test.db.classpath"/>
+               <pathelement location="${dist.home}/${app.name}.jar"/>
+               <path refid="project.classpath"/>
+            </classpath>
+      </java>
+    </target>
+
+    <!-- target: compile -->
+    <target name="compile"
+            depends="init"
+            description="--> compile and jar this component">
+        <mkdir dir="${build.home}"/>
+        <javac srcdir="${src.home}"
+               destdir="${build.home}"
+               debug="${compile.debug}"
+               deprecation="${compile.deprecation}"
+               optimize="${compile.optimize}">
+            <classpath refid="project.classpath"/>
+        </javac>
+
+        <mkdir dir="${dist.home}"/>
+        <jar destfile="${dist.home}/${app.name}.jar"
+             basedir="${build.home}"
+             excludes="**/*UT.class"/>
+    </target>
+
+    <!-- ================================= 
+          target: test              
+         ================================= -->
+    <target name="test" depends="init" description="--> run junit tests">
+        <mkdir dir="test-classes"/>
+        <javac srcdir="test" destdir="test-classes">
+            <classpath>
+                <pathelement location="${instr-classes.dir}"/>
+                <path refid="project.classpath"/>
+                <pathelement location="${build.home}"/>
+            </classpath>
+        </javac>
+        <mkdir dir="test-src"/>
+        <copy file="test-data/generate.xml.template" tofile="test-src/generate.xml">
+            <filterset>
+                <filter token="test.db.url" value="${test.db.url}"/>
+                <filter token="test.dest.dir" value="test-src"/>
+            </filterset>
+        </copy>
+        <emma-instrument instrpath="${build.home}" outdir="${instr-classes.dir}"/>
+        <mkdir dir="${test.out}"/>
+        <junit printsummary="on" haltonfailure="false" haltonerror="false"
+               failureproperty="junit.failure" fork="true" forkmode="once">
+            <classpath>
+                <pathelement location="${instr-classes.dir}"/>
+                <path refid="project.classpath"/>
+                <pathelement location="${build.home}"/>
+                <pathelement location="test-classes"/>
+                <path refid="emma.classpath"/>
+                <pathelement location="${src.home}"/>
+            </classpath>
+            <formatter type="xml"/>
+            <batchtest todir="${test.out}">
+                <fileset dir="${test.home}">
+                    <include name="**/*Test.java"/>
+                    <exclude name="**/Abstract*Test.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+        <mkdir dir="coverage"/>
+        <emma-report instrpath="${build.home}" src="${src.home}" outdir="${instr-classes.dir}"/>
+        <antcall target="fail-if-junit-failed"/>
+    </target>
+
+    <target name="fail-if-junit-failed" if="junit.failure">
+        <fail message="junit failed, see reports"/>
+    </target>
+
+    <target name="clean" depends="init" description="clean the workspace">
+        <delete dir="${dist.home}" failonerror="false"/>
+        <delete dir="${instr-classes.dir}"/>
+        <delete dir="coverage"/>
+        <delete file="coverage.ec"/>
+        <delete dir="test-classes"/>
+        <delete dir="test-src"/>
+        <delete dir="target"/>
+        <delete file="checkstyleResults.txt"/>
+        <delete dir="${build.home}"/>
+        <delete dir="${test.out}"/>
+        <delete file="velocity.log"/>
+        <delete>
+            <fileset dir="${basedir}" includes="*.emma, gauntlet-coverage.*"/>
+        </delete>
+    </target>
+
+</project>
