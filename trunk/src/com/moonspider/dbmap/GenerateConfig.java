@@ -84,7 +84,7 @@ public class GenerateConfig {
 
     public String getDriver() {
         if (driver == null) {
-            return "org.postgresql.Driver";
+            return "org.h2.Driver";
         }
         return driver;
     }
@@ -157,7 +157,7 @@ public class GenerateConfig {
     public TableConfig findTable(String name) {
         TableConfig ret = null;
         for (TableConfig table : tables) {
-            if (name.equals(table.getName())) {
+            if (name.equalsIgnoreCase(table.getName())) {
                 ret = table;
                 break;
             }

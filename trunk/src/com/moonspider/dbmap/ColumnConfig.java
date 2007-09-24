@@ -189,6 +189,7 @@ public class ColumnConfig {
         TYPEMAP.put("DOUBLE", "double");
         TYPEMAP.put("OTHER", "Object");
         TYPEMAP.put("BIGINT", "java.math.BigInteger");
+        TYPEMAP.put("BOOLEAN", "boolean");
     }
     private static final Map<String, String> TYPEMAP_NULLABLE = new HashMap<String, String>();
     static {
@@ -203,6 +204,7 @@ public class ColumnConfig {
         TYPEMAP_NULLABLE.put("ARRAY", "Object[]");
         TYPEMAP_NULLABLE.put("OTHER", "Object");
         TYPEMAP_NULLABLE.put("DOUBLE", "Double");
+        TYPEMAP_NULLABLE.put("BOOLEAN", "Boolean");
     }
     public String toString() {
         String s = "[ColumnConfig: name=" + name + " unique=" + isUnique();

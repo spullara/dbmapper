@@ -45,7 +45,7 @@ public class TableConfig {
         /* foreign keys */
         for (DBKey key : table.getFkeys()) {
             /* sanity check */
-            if (!getName().equals(key.getFktable())) {
+            if (!getName().equalsIgnoreCase(key.getFktable())) {
                 throw new RuntimeException(
                         "table " + getName() + " doesn't grok fkey=" + key
                         );

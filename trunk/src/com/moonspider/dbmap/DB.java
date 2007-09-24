@@ -30,7 +30,6 @@ public class DB {
     private Map<String, DBTable> tables = new TreeMap<String, DBTable>();
 
     public DB(Connection conn) throws SQLException {
-        List ret = new ArrayList();
         DatabaseMetaData meta = conn.getMetaData();
         ResultSet rs = meta.getTables(null, null, "%", TABLE_TYPE);
         while (rs.next()) {
