@@ -27,12 +27,12 @@ public class ${table.className}
 #end
     $col.annotation
     $col.getterAccess $col.javaType get${col.fieldUpcase}() {
-        return this.$col.name;
+        return this.$col.fieldName;
     }
-    ${col.setterAccess} void set${col.fieldUpcase}($col.javaType $col.name) {
-        this.${col.name} = $col.name;
+    ${col.setterAccess} void set${col.fieldUpcase}($col.javaType $col.fieldName) {
+        this.${col.fieldName} = $col.fieldName;
     }
-    private $col.javaType $col.name;
+    private $col.javaType $col.fieldName;
     
 #end
 

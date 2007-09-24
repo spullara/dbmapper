@@ -20,13 +20,11 @@ public class Generator {
     public void generate() throws Exception {
         DB db = getDB();
         conf.merge(db);
-        //generateBean(conf.findTable("module"), new File("/tmp/Module.java"));
         for (TableConfig tc : conf.getTables()) {
             if (!tc.isJoinTable() && !tc.isSkip()) {
                 generateBean(tc);
             }
         }
-        generateWS();
     }
 
     private void generateBean(TableConfig tc) throws Exception {
@@ -36,35 +34,6 @@ public class Generator {
         generateBean(tc, f);
     }
     
-    private void generateWS() throws Exception {
-        String path = conf.getWebserviceDirectory();
-        String clazz = conf.getWebserviceClass();
-        if (path == null || clazz == null) {
-            return;
-        }
-        int ind = clazz.lastIndexOf('.');
-        String pkg = clazz.substring(0, ind);
-        String cname = clazz.substring(ind + 1);
-        WS ws = new WS();
-        ws.setPkg(pkg);
-        ws.setClassName(cname);
-        //File dir = new File(conf.getDestinationDirectory());
-        File dir = new File(path);
-        //dir = new File(dir, conf.getPkg().replace('.', File.separatorChar));
-        dir = new File(dir, pkg.replace('.', File.separatorChar));
-        File f = new File(dir, ws.getClassName() + ".java");
-        Template tp = getTemplate("ws.template");
-        VelocityContext ctx = new VelocityContext();
-        Writer w = new FileWriter(f);
-        try {
-            ctx.put("conf", conf);
-            ctx.put("ws", ws);
-            tp.merge(ctx, w);
-        } finally {
-            w.close();
-        }
-    }
-
     private Template getTemplate(String name) throws Exception {
         Template tp = null;
         String tpath = name;
@@ -124,32 +93,6 @@ public class Generator {
         gen.generate();
     }
 
-    public class WS {
-        private String className, pkg;
-        public List<String> getTypes() {
-            List<String> ret = new ArrayList<String>();
-            for (TableConfig tc : conf.getTables()) {
-                if (!tc.isSkip() && !tc.isJoinTable() && !"Work".equals(tc.getClassName())
-                        && !"work".equals(tc.getName())) {
-                    ret.add(tc.getClassName());
-                }
-            }
-            System.err.println("WS has " + ret.size() + " classes");
-            return ret;
-        }
-        public String getClassName() {
-            return className;
-        }
-        public void setClassName(String className) {
-            this.className = className;
-        }
-        public String getPkg() {
-            return pkg;
-        }
-        public void setPkg(String pkg) {
-            this.pkg = pkg;
-        }
-    }
     public GenerateConfig getConfig() { return conf; }
 
     public void setConfig(GenerateConfig conf) { this.conf = conf; }

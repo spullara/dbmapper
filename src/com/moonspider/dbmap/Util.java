@@ -14,7 +14,7 @@ public final class Util {
     }
 
     public static String upcase(String s) {
-        //    return s.substring(0, 1).toUpperCase() + s.substring(1)
+        s = s.toLowerCase();
         StringBuffer sb = new StringBuffer();
         char c = s.charAt(0);
         sb.append(Character.toUpperCase(c));

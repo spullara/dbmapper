@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <generate-config>
     <destination-directory>@test.dest.dir@</destination-directory>
-    <extends>gsc.ci.ejb.GauntletBean</extends>
+    <extends>Object</extends>
     <user>bt</user>
     <password></password>
     <package>gsc.ci.ejb</package>
@@ -28,228 +28,40 @@
 	<skip>true</skip>
     </table>
     <table>
-        <name>emma</name>
-        <implements>ICoverage</implements>
-    </table>
-    <table>
-        <name>emma_package_report</name>
-        <implements>ICoverage</implements>
-    </table>
-    <table>
-        <name>emma_srcfile_report</name>
-        <implements>ICoverage</implements>
-    </table>
-    <table>
-        <name>emma_class_report</name>
-        <implements>ICoverage</implements>
-    </table>
-    <table>
         <name>svnlog</name>
         <column>
-            <name>commit_date</name>
+            <name>COMMIT_DATE</name>
             <field-name>date</field-name>
         </column>
         <column>
-            <name>the_year</name>
+            <name>THE_YEAR</name>
             <field-name>year</field-name>
         </column>
     </table>
     <table>
         <name>svnlog_path</name>
         <column>
-            <name>commit_action</name>
+            <name>COMMIT_ACTION</name>
             <field-name>action</field-name>
-        </column>
-    </table>
-    <table>
-        <class>Work</class>
-        <name>work_list</name>
-        <column>
-            <name>handler_ser</name>
-            <field-name>handler</field-name>
         </column>
     </table>
     <table>
         <name>test_result</name>
         <column>
-            <name>duration</name>
+            <name>DURATION</name>
             <field-name>time</field-name>
         </column>
     </table>
     <table>
         <name>suite_result</name>
         <column>
-            <name>duration</name>
+            <name>DURATION</name>
             <field-name>time</field-name>
         </column>
     </table>
     <table>
         <name>property</name>
         <extra-body>
-	/** convenience accessor */
-	@javax.persistence.Transient
-	public String getName() {
-	  String ret = null;
-	  if (getMetaProperty() != null) {
-	    ret = getMetaProperty().getName();
-          }
-	  return ret;
-	}
-
-	/** emulate boolean on top of int */
-	@javax.persistence.Transient
-        public Boolean getBooleanValue() {
-	  Integer intVal = getIntValue();
-	  if (intVal != null) {
-	    return intVal.intValue() == 0 ? Boolean.FALSE: Boolean.TRUE;
-	  }
-	  return null;
-	}
-	public void setBooleanValue(Boolean b) {
-	  Integer intVal = null;
-	  if (b != null) {
-	    if (b.booleanValue()) {
-	      intVal = new Integer(1);
-	    } else {
-	      intVal = new Integer(0);
-	    }
-	  }
-	  setIntValue(intVal);
-	}
-
-	/** opaque value based on property type: String|Integer|Boolean etc */
-	@javax.persistence.Transient
-	public Object getValue() {
-	  Object ret = null;
-	  MetaProperty mp = getMetaProperty();
-	  if (mp != null) {
-	    switch (mp.getDataType()) {
-	      case MetaProperty.DATA_TYPE_INT: ret = getIntValue(); break;
-	      case MetaProperty.DATA_TYPE_BOOL: ret = getBooleanValue(); break;
-	      case MetaProperty.DATA_TYPE_FLOAT:
-	      Integer intVal = getIntValue();
-	      if (intVal != null) {
-                ret = new Float((float) intVal.intValue()); break;
-              }
-	      case MetaProperty.DATA_TYPE_STRING:
-	      case MetaProperty.DATA_TYPE_CLASS:
-	      default:
-                ret = getTextValue(); break;
-	    }
-	  }
-          return ret;	  
-	}
-
-	/** convenience accessor for declaring object */
-	@javax.persistence.Transient
-	public Object getDeclaringObject() {
-          Object ret = null;
-          if (getSandbox() != null) {
-            ret = getSandbox();
-          } else if (getModule() != null) {
-            ret = getModule();
-          } else if (getProject() != null) {
-            ret = getProject();
-          } else if (getRepository() != null) {
-            ret = getRepository();
-          } else if (getEnvironment() != null) {
-            ret = getEnvironment();
-          } else if (getGauntletUser() != null) {
-            ret = getGauntletUser();
-          } else if (getRole() != null) {
-	    ret = getRole();
-	  }
-	  return ret;
-        }	
 	</extra-body>
-    </table>
-    <table>
-        <name>meta_property</name>
-        <extra-body>
-	/** enumeration of known property data types */
-	public static final int DATA_TYPE_STRING = 0;
-	public static final int DATA_TYPE_INT    = 1;
-	public static final int DATA_TYPE_FLOAT  = 2;
-	public static final int DATA_TYPE_BOOL   = 3;
-	public static final int DATA_TYPE_CLASS  = 4;
-
-	/** human-readable string of data type */
-	@Transient
-	public String getDataTypeName() {
-	   String ret = null;
-	   switch (getDataType()) {
-	      case DATA_TYPE_STRING:
-	      ret = "string"; break;
-	      case DATA_TYPE_INT:
-	      ret = "int"; break;
-	      case DATA_TYPE_FLOAT:
-	      ret = "float"; break;
-	      case DATA_TYPE_BOOL:
-	      ret = "boolean"; break;
-	      case DATA_TYPE_CLASS:
-	      ret = "classname"; break;
-	      default:
-	      ret = "error: unknown type: " + getDataType();
-	      break;
-	   }
-	   return ret;
-	}
-
-	@Transient
-	public Boolean getDefaultBool() {
-	   Integer I = getDefaultInt();
-	   if (I != null) {
-	       return (I.intValue() == 0) ? Boolean.FALSE: Boolean.TRUE;
-	   } else {
-	       return null;
-           }
-	}
-
-	public void setDefaultBool(Boolean b) {
-	   if (b != null) {
-	      if (b.booleanValue()) {
-	        setDefaultInt(1);
-	      } else {
-	        setDefaultInt(0);
-	      }
-	   } else {
-	      setDefaultInt(null);
-	   }
-	}
-	</extra-body>
-    </table>
-    <table>
-        <name>emma_method_report</name>
-        <implements>ICoverage</implements>
-        <extra-body>
-    // dummy methods from ICoverage
-    @Transient
-    public Double getClassCoverage() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    @Transient
-    public Integer getCoveredClasses() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    @Transient
-    public Integer getTotalClasses() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    public void setClassCoverage(Double class_coverage) {
-        // TODO Auto-generated method stub
-        
-    }
-    public void setCoveredClasses(Integer covered_classes) {
-        // TODO Auto-generated method stub
-        
-    }
-    public void setTotalClasses(Integer total_classes) {
-        // TODO Auto-generated method stub
-        
-    }
-        </extra-body>
     </table>
 </generate-config>
