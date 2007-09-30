@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2007, Dave Brown and Sam Pullara
+ */
+
 package com.moonspider.dbmap;
 
 import java.io.File;
@@ -37,19 +41,13 @@ public class Generator {
     private Template getTemplate(String name) throws Exception {
         Template tp = null;
         String tpath = name;
-        /*
         if (name.charAt(0) != '/') {
-            tpath = "com/moonspider/dbmap/" + name;
+            tpath = "/com/moonspider/dbmap/" + name;
         }
         try {
             tp = Velocity.getTemplate(tpath);
-        } catch (Exception e) {
-        }
-        */
-        try {
-            tp = Velocity.getTemplate(name);
         } catch (Exception ex) {
-            tp = Velocity.getTemplate('/' + name);
+            tp = Velocity.getTemplate(name);
         }
         return tp;
     }
@@ -86,7 +84,6 @@ public class Generator {
         if (args.length != 1) {
             usage();
         }
-        //Velocity.init();
         initVelocity();
         Generator gen = new Generator();
         gen.setConfig(GenerateConfig.load(args[0]));
@@ -108,12 +105,9 @@ public class Generator {
             Velocity.RUNTIME_LOG_LOGSYSTEM_CLASS,
             "org.apache.velocity.runtime.log.NullLogSystem"
             );
-        Velocity.init(props);
-        props.put("resource.loader", "file, class");
-        props.put("file.resource.loader.class",
-                  "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
-        props.put("file.resource.loader.path", ".");
+        props.put("resource.loader", "class");
         props.put("class.resource.loader.class",
                   "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        Velocity.init(props);
     }
 }

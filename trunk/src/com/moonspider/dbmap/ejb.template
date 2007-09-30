@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2005, Gauntlet Systems Corporation. All Rights Reserved.
- */
-
 package $conf.pkg;
 
 import java.util.*;

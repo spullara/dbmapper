@@ -29,41 +29,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/velocity-dep-1.4.jar" afterPath="$PROJECT_DIR$/lib/velocity/velocity-dep-1.4.jar" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spoonfeedr.xml" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/javaee.jar" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/velocity/velocity-dep-1.4.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/moonspider/dbmap/AbstractDBTest.java" afterPath="$PROJECT_DIR$/test/com/moonspider/dbmap/AbstractDBTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ws.template" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/Generator.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/Generator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/DBTable.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/DBTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/Util.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/Util.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test-lib/mysql-connector-java-5.0.5-bin.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test-lib/h2.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ejb.template" afterPath="$PROJECT_DIR$/ejb.template" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/checkstyle.xml" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jaxb/jaxb-impl.jar" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/hsqldb.jar" afterPath="$PROJECT_DIR$/test-lib/hsqldb.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbmap.iml" afterPath="$PROJECT_DIR$/dbmap.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbmap.iws" afterPath="$PROJECT_DIR$/dbmap.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-data/generate.xml.template" afterPath="$PROJECT_DIR$/test-data/generate.xml.template" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/checkstyle-all-4.0-beta2.jar" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test-lib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jaxb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/TableConfig.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/TableConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jaxb/jsr173_1.0_api.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jaxb/jaxb-api.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jaxb/jaxb-xjc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jaxb/activation.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/DBColumn.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/DBColumn.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/DB.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/DB.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test-lib/junit-4.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/velocity/velocity-dep-1.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/moonspider/dbmap/DBTest.java" afterPath="$PROJECT_DIR$/test/com/moonspider/dbmap/DBTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/GenerateConfig.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/GenerateConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-data/simplelock.sql" afterPath="$PROJECT_DIR$/test-data/simplelock.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test-lib/postgresql-8.1-407.jdbc3.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbmap.ipr" afterPath="$PROJECT_DIR$/dbmap.ipr" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/generate.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/ColumnConfig.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/ColumnConfig.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/commons-cli-1.0.jar" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/velocity" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jaxb/jaxb1-impl.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbmap.iws" afterPath="$PROJECT_DIR$/dbmap.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/moonspider/dbmap/DBColumnTest.java" afterPath="$PROJECT_DIR$/test/com/moonspider/dbmap/DBColumnTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/moonspider/dbmap/GenerateBeansTest.java" afterPath="$PROJECT_DIR$/test/com/moonspider/dbmap/GenerateBeansTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/DBKey.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/DBKey.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/moonspider/dbmap/TableConfig.java" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/TableConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ejb.template" afterPath="$PROJECT_DIR$/src/com/moonspider/dbmap/ejb.template" />
     </list>
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
@@ -127,6 +112,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/ResourceManagerImpl.java" line="414" class="org.apache.velocity.runtime.resource.ResourceManagerImpl" package="org.apache.velocity.runtime.resource">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -184,91 +184,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GenerateConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/GenerateConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="24" selection-start="3583" selection-end="3583" vertical-scroll-proportion="0.4770206">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TableConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/TableConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="44" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.32329637">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColumnConfig.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/ColumnConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="37" selection-start="1524" selection-end="1524" vertical-scroll-proportion="0.36133122">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Generator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/Generator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="15" selection-start="504" selection-end="504" vertical-scroll-proportion="0.09508716">
+            <state line="44" column="22" selection-start="1224" selection-end="1224" vertical-scroll-proportion="0.390507">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/com/moonspider/dbmap/DBTest.java">
+      <file leaf-file-name="RuntimeSingleton.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/RuntimeSingleton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="994" selection-end="994" vertical-scroll-proportion="0.32329637">
+            <state line="302" column="0" selection-start="10426" selection-end="10426" vertical-scroll-proportion="0.26213592">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generate.xml.template" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test-data/generate.xml.template">
+      <file leaf-file-name="RuntimeInstance.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/RuntimeInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="31" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.4659271">
+            <state line="1101" column="0" selection-start="35059" selection-end="35059" vertical-scroll-proportion="0.26213592">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Svnlog.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test-src/gsc/ci/ejb/Svnlog.java">
+      <file leaf-file-name="ResourceManagerImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/ResourceManagerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="3" selection-start="3761" selection-end="3761" vertical-scroll-proportion="0.44849446">
+            <state line="414" column="0" selection-start="14506" selection-end="14506" vertical-scroll-proportion="0.26213592">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TEST-com.moonspider.dbmap.GenerateBeansTest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.out/TEST-com.moonspider.dbmap.GenerateBeansTest.xml">
+      <file leaf-file-name="Template.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/Template.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="43" selection-start="7357" selection-end="7357" vertical-scroll-proportion="0.5946385">
+            <state line="92" column="0" selection-start="3154" selection-end="3154" vertical-scroll-proportion="0.26213592">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.xml">
+      <file leaf-file-name="ClasspathResourceLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/loader/ClasspathResourceLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="36" selection-start="1646" selection-end="1646" vertical-scroll-proportion="0.45264846">
+            <state line="118" column="0" selection-start="4049" selection-end="4049" vertical-scroll-proportion="0.83063644">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Util.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/Util.java">
+      <file leaf-file-name="ClassUtils.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/util/ClassUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="216" selection-end="216" vertical-scroll-proportion="0.08557845">
+            <state line="136" column="0" selection-start="4693" selection-end="4693" vertical-scroll-proportion="1.1024811">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/loader/ResourceLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="131" column="4" selection-start="4080" selection-end="4108" vertical-scroll-proportion="0.3257821">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Resource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/Resource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="248" column="0" selection-start="6587" selection-end="6587" vertical-scroll-proportion="0.9989213">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExtendedProperties.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/velocity/velocity-dep-1.5.jar!/org/apache/commons/collections/ExtendedProperties.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="0" selection-start="3276" selection-end="3276" vertical-scroll-proportion="0.28694713">
               <folding />
             </state>
           </provider>
@@ -373,28 +373,6 @@
           <option name="myItemId" value="dbmap" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Libraries" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.LibraryGroupNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="dbmap" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="dbmap" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Libraries" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.LibraryGroupNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Test" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -424,7 +402,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/test.out" />
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/test-lib" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -534,14 +512,14 @@
     <option name="referenceOn" value="false" />
     <option name="referencePos" value="0" />
   </component>
-  <component name="RunManager" selected="JUnit.DBTest">
-    <tempConfiguration default="false" name="DBTest" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+  <component name="RunManager" selected="JUnit.GenerateBeansTest">
+    <tempConfiguration default="false" name="GenerateBeansTest" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <pattern value="com.moonspider.dbmap.*" />
       <module name="dbmap" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.moonspider.dbmap" />
-      <option name="MAIN_CLASS_NAME" value="com.moonspider.dbmap.DBTest" />
+      <option name="MAIN_CLASS_NAME" value="com.moonspider.dbmap.GenerateBeansTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -553,7 +531,7 @@
         <value defaultName="wholeProject" />
       </option>
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="49453" />
+        <option name="DEBUG_PORT" value="64078" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
@@ -564,13 +542,6 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -582,6 +553,20 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <module name="" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
@@ -603,19 +588,12 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <module name="" />
-      <method>
-        <option name="Make" value="true" />
-      </method>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
     <configuration default="false" name="Generate Tempo" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" value="com.moonspider.dbmap.Generator" />
@@ -736,14 +714,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="350" y="24" width="2026" height="1435" extended-state="0" />
+    <frame x="100" y="40" width="2026" height="1435" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32902583" order="7" x="703" y="985" width="1852" height="331" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27314112" order="0" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262195" order="1" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27314112" order="0" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254573" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3246951" order="9" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
@@ -753,7 +731,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39939025" order="3" />
@@ -853,93 +831,107 @@
     <option name="myLastEditedConfigurable" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/DB.java">
+    <entry file="jar://$PROJECT_DIR$/lib/velocity/velocity-dep-1.5.jar!/org/apache/velocity/app/Velocity.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="13" selection-start="697" selection-end="697" vertical-scroll-proportion="0.14239483">
+        <state line="43" column="47" selection-start="3280" selection-end="3280" vertical-scroll-proportion="0.40417">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/moonspider/dbmap/DBColumnTest.java">
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/ResourceManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0776699">
+        <state line="69" column="20" selection-start="2582" selection-end="2582" vertical-scroll-proportion="0.6275753">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/Util.java">
+    <entry file="file://$PROJECT_DIR$/test/com/moonspider/dbmap/GenerateBeansTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="216" selection-end="216" vertical-scroll-proportion="0.08557845">
+        <state line="22" column="13" selection-start="441" selection-end="441" vertical-scroll-proportion="0.2134063">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ejb.template">
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/app/Velocity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="74" selection-start="100" selection-end="100" vertical-scroll-proportion="0.042071197">
+        <state line="502" column="0" selection-start="18056" selection-end="18056" vertical-scroll-proportion="0.33242133">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/moonspider/dbmap/DBTest.java">
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/RuntimeSingleton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="994" selection-end="994" vertical-scroll-proportion="0.32329637">
+        <state line="302" column="0" selection-start="10426" selection-end="10426" vertical-scroll-proportion="0.26213592">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/velocity/velocity-dep-1.5.jar!/org/apache/commons/collections/ExtendedProperties.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="0" selection-start="3276" selection-end="3276" vertical-scroll-proportion="0.28694713">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/RuntimeInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1101" column="0" selection-start="35059" selection-end="35059" vertical-scroll-proportion="0.26213592">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/ResourceFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.68608415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/Resource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="248" column="0" selection-start="6587" selection-end="6587" vertical-scroll-proportion="0.9989213">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/loader/ResourceLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="4" selection-start="4080" selection-end="4108" vertical-scroll-proportion="0.3257821">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/Generator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="15" selection-start="504" selection-end="504" vertical-scroll-proportion="0.09508716">
+        <state line="44" column="22" selection-start="1224" selection-end="1224" vertical-scroll-proportion="0.390507">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/GenerateConfig.java">
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/ResourceManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="24" selection-start="3583" selection-end="3583" vertical-scroll-proportion="0.4770206">
+        <state line="414" column="0" selection-start="14506" selection-end="14506" vertical-scroll-proportion="0.26213592">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/ColumnConfig.java">
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/Template.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="37" selection-start="1524" selection-end="1524" vertical-scroll-proportion="0.36133122">
+        <state line="92" column="0" selection-start="3154" selection-end="3154" vertical-scroll-proportion="0.26213592">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/moonspider/dbmap/TableConfig.java">
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/runtime/resource/loader/ClasspathResourceLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="44" selection-start="1407" selection-end="1407" vertical-scroll-proportion="0.32329637">
+        <state line="118" column="0" selection-start="4049" selection-end="4049" vertical-scroll-proportion="0.83063644">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.out/TEST-com.moonspider.dbmap.GenerateBeansTest.xml">
+    <entry file="file:///Users/sam/Software/velocity-1.5/src/java/org/apache/velocity/util/ClassUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="43" selection-start="7357" selection-end="7357" vertical-scroll-proportion="0.5946385">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="36" selection-start="1646" selection-end="1646" vertical-scroll-proportion="0.45264846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-src/gsc/ci/ejb/Svnlog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="3" selection-start="3761" selection-end="3761" vertical-scroll-proportion="0.44849446">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-data/generate.xml.template">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="31" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.4659271">
+        <state line="136" column="0" selection-start="4693" selection-end="4693" vertical-scroll-proportion="1.1024811">
           <folding />
         </state>
       </provider>
