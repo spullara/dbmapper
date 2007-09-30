@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, Gauntlet Systems Corporation. All Rights Reserved.
+ * Copyright (c) 2007, Dave Brown and Sam Pullara
  */
 
 /*
