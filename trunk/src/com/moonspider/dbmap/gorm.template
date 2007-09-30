@@ -1,0 +1,63 @@
+package $conf.pkg;
+
+class ${table.className} {
+
+    static withTable = "$table.name"
+
+    static constraints = {
+#foreach($col in $table.columns)
+#if ($col.nullable)
+        ${col.fieldName}(nullable:true)
+#end
+#end
+    }
+
+#foreach($col in $table.columns)
+    $col.javaType $col.fieldName;
+#end
+
+    // Relations
+    
+#foreach($rel in $table.relations)
+#if ($rel.cardinality == "OneToOne" || $rel.cardinality == "ManyToOne")
+    ${rel.type} ${rel.fieldName};
+#end
+#end
+
+    static hasMany = [
+#foreach($rel in $table.relations)
+#if ($rel.cardinality == "OneToMany" || $rel.cardinality == "ManyToMany")
+        ${rel.fieldName} : ${rel.baseType},
+#end
+#end
+    ]
+
+    static mappedBy = [
+#foreach($rel in $table.relations)
+#if ($rel.cardinality == "OneToMany")
+        ${rel.fieldName} : "${rel.baseMappedBy}",
+#end
+#end
+    ]
+
+    static belongsTo = [
+#foreach($rel in $table.relations)
+#if ($rel.cardinality == "ManyToOne" || $rel.cardinality == "ManyToMany")
+        ${rel.baseType},
+#end
+#end
+    ]
+
+/*
+#foreach($rel in $table.relations)
+    @${rel.cardinality}(
+        ${rel.mappedBy}
+       cascade = ${rel.cascade},
+        fetch = FetchType.${rel.fetchType})
+    $rel.joinColumn
+#end
+*/
+
+#if ($table.extraBody)$table.extraBody#end
+
+}

@@ -4,6 +4,8 @@
 
 package com.moonspider.dbmap;
 
+import com.sampullara.cli.Argument;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,11 +20,29 @@ import java.util.List;
 @XmlAccessorType(value = XmlAccessType.PROPERTY)
 public class GenerateConfig {
 
-    private String destinationDirectory, url, pkg, user, password;
-    private String webserviceDirectory, webserviceClass;
-    private String globalExtends, globalImplements;
-    private List<TableConfig> tables;
+
+    @Argument(alias = "t", description = "The type to generate, either 'ejb' or 'gorm'")
+    private String type = "ejb";
+    @Argument(alias = "d", description = "Destination directory")
+    private String destinationDirectory;
+    @Argument(description = "The url of the database")
+    private String url;
+    @Argument(alias = "package", description = "The target package")
+    private String pkg;
+    @Argument(alias = "u", description = "Database user")
+    private String user = "sa";
+    @Argument(alias = "p", description = "Database password")
+    private String password = "";
+    @Argument(alias = "extends", description = "Class for all Java classes to extend")
+    private String globalExtends;
+    @Argument(alias = "implements", description = "Class for all Java classes to implement")
+    private String globalImplements;
+    @Argument(description = "Database drive class")
     private String driver;
+    @Argument(alias = "ext", description = "File extension for the generated code")
+    private String extension = "java";
+
+    private List<TableConfig> tables;
 
     public GenerateConfig() {
         tables = new ArrayList<TableConfig>();
@@ -36,25 +56,6 @@ public class GenerateConfig {
     public void setDestinationDirectory(String destinationDirectory) {
         this.destinationDirectory = destinationDirectory;
     }
-
-    @XmlElement(name = "webservice-directory")
-    public String getWebserviceDirectory() {
-        return webserviceDirectory;
-    }
-
-    public void setWebserviceDirectory(String s) {
-        webserviceDirectory = s;
-    }
-
-    @XmlElement(name = "webservice-class")
-    public String getWebserviceClass() {
-        return webserviceClass;
-    }
-
-    public void setWebserviceClass(String s) {
-        webserviceClass = s;
-    }
-
 
     @XmlElement(name = "extends")
     public String getGlobalExtends() {
@@ -191,5 +192,21 @@ public class GenerateConfig {
         Unmarshaller unmush = jxbc.createUnmarshaller();
         cfg = (GenerateConfig) unmush.unmarshal(f);
         return cfg;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
     }
 }

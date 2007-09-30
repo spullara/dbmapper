@@ -496,6 +496,13 @@
         <root url="file:///Users/sam/Projects/dbmigrate/src" />
       </SOURCES>
     </library>
+    <library name="CLI">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/cli-10.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
   </component>
 </project>
 
