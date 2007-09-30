@@ -228,8 +228,8 @@ public class TableConfig {
     private Relation makeRelation(ColumnConfig left, ColumnConfig right) {
         String leftC, rightC;
         String method, fetch, cascade = null, type;
-        String mappedBy = "// not mapped by";
-        String join = "// no join column";
+        String mappedBy = "";
+        String join = "";
         TableConfig rightTable = right.getTableConfig();
 
         /* if our side is to our prim key, the prop name should derive
@@ -281,16 +281,12 @@ public class TableConfig {
             
         }
 
-        /*
-        p("makeRelation() " + left.getTableConfig().getName() + '.'
-                + left.getName() + "->" + right.getTableConfig().getName()
-                + "." + right.getName() + " propName=" + propName);
-*/
         if (right.isUnique()) {
             type = rightTable.getClassName();
             method = Util.upcase(propName);
         } else {
             type = "Collection<" + rightTable.getClassName() + ">";
+            rel.setBaseType(rightTable.getClassName());
             method = Util.upcase(propName) + "List";
         }
         if (cascade == null) {
@@ -304,6 +300,7 @@ public class TableConfig {
         if ("One".equals(leftC)) {
             if (!right.isPrimKey()) {
                 mappedBy = "mappedBy = \"" + Util.unId(right.getFieldName()) + "\",";
+                rel.setBaseMappedBy(Util.unId(right.getFieldName()));
             }
             if ("One".equals(rightC)) {
                 fetch = "EAGER";
@@ -321,8 +318,10 @@ public class TableConfig {
         rel.setFetchType(fetch);
         rel.setMethod(method);
         rel.setType(type);
+        if (rel.getBaseType() == null) rel.setBaseType(type);
         rel.setMappedBy(mappedBy);
         rel.setJoinColumn(join);
+        rel.setFieldName(Util.toPropName(Util.unId(method)));
         return rel;
     }
 
@@ -349,10 +348,13 @@ public class TableConfig {
     
     @XmlRootElement(name = "relation")
     public static class Relation {
+        private String baseMappedBy;
+        private String baseType;
         private String cardinality, cascade, fetchType, method, type;
-        private String mappedBy = "// not mapped by";
-        private String joinColumn = "// no join column";
+        private String mappedBy = "";
+        private String joinColumn = "";
         private String name;
+        private String fieldName;
         private boolean xmlTransient = true;
         
         public Relation() {
@@ -423,6 +425,30 @@ public class TableConfig {
         
         public String toString() {
             return "[Relation: name=" + name + "]";
+        }
+
+        public String getFieldName() {
+            return fieldName;
+        }
+
+        public void setFieldName(String fieldName) {
+            this.fieldName = fieldName;
+        }
+
+        public String getBaseType() {
+            return baseType;
+        }
+
+        public void setBaseType(String baseType) {
+            this.baseType = baseType;
+        }
+
+        public String getBaseMappedBy() {
+            return baseMappedBy;
+        }
+
+        public void setBaseMappedBy(String baseMappedBy) {
+            this.baseMappedBy = baseMappedBy;
         }
     }
     

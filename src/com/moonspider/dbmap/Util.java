@@ -35,9 +35,9 @@ public final class Util {
     public static String unId(String idStr) {
         String ret = idStr;
         int len = idStr.length();
-        if (idStr.endsWith("_id")) {
+        if (idStr.toLowerCase().endsWith("_id")) {
             ret = idStr.substring(0, len - 3);
-        } else if (idStr.endsWith("Id")) {
+        } else if (idStr.toLowerCase().endsWith("id")) {
             ret = idStr.substring(0, len - 2);
         }
         return ret;
