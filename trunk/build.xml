@@ -89,9 +89,14 @@
         </javac>
 
         <mkdir dir="${dist.home}"/>
+        <copy todir="${build.home}">
+            <fileset dir="src" includes="**/*.template"/>
+        </copy>
         <jar destfile="${dist.home}/${app.name}.jar"
              basedir="${build.home}"
-             excludes="**/*UT.class"/>
+             excludes="**/*UT.class">
+            <zipgroupfileset dir="lib" includes="**/*.jar"/>
+        </jar>
     </target>
 
     <!-- ================================= 
