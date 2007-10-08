@@ -1,4 +1,6 @@
+#if ($conf.pkg != "")
 package $conf.pkg;
+#end
 
 class ${table.className} {
 
