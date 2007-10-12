@@ -3,6 +3,7 @@
     <destination-directory>@test.dest.dir@</destination-directory>
     <extends>Object</extends>
     <user>bt</user>
+    <jaxb>true</jaxb>
     <password></password>
     <package>gsc.ci.ejb</package>
     <url>@test.db.url@</url>

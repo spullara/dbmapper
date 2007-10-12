@@ -9,13 +9,17 @@ class ${table.className} {
     static constraints = {
 #foreach($col in $table.columns)
 #if ($col.nullable)
+#if (!$col.fkey)
         ${col.fieldName}(nullable:true)
+#end
 #end
 #end
     }
 
 #foreach($col in $table.columns)
+#if (!$col.fkey)
     $col.javaType $col.fieldName;
+#end
 #end
 
     // Relations
@@ -26,40 +30,112 @@ class ${table.className} {
 #end
 #end
 
+#set ($hasMany = 0)
     static hasMany = [
 #foreach($rel in $table.relations)
 #if ($rel.cardinality == "OneToMany" || $rel.cardinality == "ManyToMany")
+#set ($hasMany = $hasMany + 1)
         ${rel.fieldName} : ${rel.baseType},
 #end
 #end
+#if ($hasMany == 0)
+        :
+#end
     ]
 
+#set ($mappedBy = 0)
     static mappedBy = [
 #foreach($rel in $table.relations)
 #if ($rel.cardinality == "OneToMany")
+#set ($mappedBy = $mappedBy + 1)
         ${rel.fieldName} : "${rel.baseMappedBy}",
 #end
+#end
+#if ($mappedBy == 0)
+        :
 #end
     ]
 
     static belongsTo = [
 #foreach($rel in $table.relations)
-#if ($rel.cardinality == "ManyToOne" || $rel.cardinality == "ManyToMany")
+#if ($rel.cardinality == "ManyToOne" || ($rel.cardinality == "ManyToMany" && $rel.baseType.compareTo($table.name) < 0))
         ${rel.baseType},
 #end
 #end
     ]
 
-/*
-#foreach($rel in $table.relations)
-    @${rel.cardinality}(
-        ${rel.mappedBy}
-       cascade = ${rel.cascade},
-        fetch = FetchType.${rel.fetchType})
-    $rel.joinColumn
-#end
-*/
-
 #if ($table.extraBody)$table.extraBody#end
 
 }
+
+/*
+package $conf.pkg;
+
+import java.util.*;
+import javax.persistence.*;
+import javax.xml.bind.annotation.*;
+
+@Entity
+@Table(name="$table.name")
+@XmlRootElement
+@XmlAccessorType(value = javax.xml.bind.annotation.XmlAccessType.PROPERTY)
+public class ${table.className}
+#if ($table.tableExtends) extends $table.tableExtends
+#elseif ($conf.globalExtends) extends $conf.globalExtends
+#end
+#if ($table.tableImplements)implements $table.tableImplements
+#elseif ($conf.globalImplements) implements $conf.globalImplements
+#end
+{
+    // Columns
+
+#foreach($col in $table.columns)
+#if($col.xmlAnnotation)    $col.xmlAnnotation
+#end
+    $col.annotation
+    $col.getterAccess $col.javaType get${col.fieldUpcase}() {
+        return this.$col.fieldName;
+    }
+    ${col.setterAccess} void set${col.fieldUpcase}($col.javaType $col.fieldName) {
+        this.${col.fieldName} = $col.fieldName;
+    }
+    private $col.javaType $col.fieldName;
+
+#end
+
+    // Relations
+
+#foreach($rel in $table.relations)
+    // Relation name: ${rel.name}
+#if ($rel.xmlTransient)
+    @XmlTransient
+#end
+    @${rel.cardinality}(
+        ${rel.mappedBy}
+        cascade = ${rel.cascade},
+        fetch = FetchType.${rel.fetchType})
+    $rel.joinColumn
+    public $rel.type get${rel.method}() {
+        return this.my${rel.method};
+    }
+    public void set${rel.method}(${rel.type} my${rel.method}) {
+        this.my${rel.method} = my${rel.method};
+    }
+    private ${rel.type} my${rel.method};
+
+#end
+#if ($table.extraBody)$table.extraBody#end
+
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(this.getClass().getName() + "|");
+#foreach ($col in $table.columns)
+#if (!${col.xmlTransient})
+        sb.append("${col.name}=" + get${col.fieldUpcase}() + "|");
+#end
+#end
+
+        return sb.toString();
+    }
+}
+*/

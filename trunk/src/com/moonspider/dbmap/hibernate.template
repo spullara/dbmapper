@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-configuration SYSTEM
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+#if ($conf.pkg != "")
+        <mapping package="$conf.pkg" />
+#end
+#foreach($table in ${conf.getTables()})
+#if (!$table.isJoinTable() && !$table.isSkip() && !$table.getName().equalsIgnoreCase("db_version"))
+#if ($conf.pkg != "")
+        <mapping class="${conf.pkg}.${table.className}" />
+#else
+        <mapping class="${table.className}" />
+#end
+#end
+#end
+    </session-factory>
+</hibernate-configuration>

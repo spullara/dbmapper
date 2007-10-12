@@ -25,9 +25,28 @@ public class Generator {
         DB db = getDB();
         conf.merge(db);
         for (TableConfig tc : conf.getTables()) {
-            if (!tc.isJoinTable() && !tc.isSkip()) {
+            if (!tc.isJoinTable() && !tc.isSkip() && !tc.getName().equalsIgnoreCase("db_version")) {
                 generateBean(tc);
             }
+        }
+        String hibernate = conf.getHibernate();
+        if (hibernate != null) {
+            File f = new File(hibernate);
+            generateHibernate(f);
+        }
+    }
+
+    private void generateHibernate(File dir) throws Exception {
+        dir.mkdirs();
+        Template tp = Velocity.getTemplate("com/moonspider/dbmap/hibernate.template");
+        VelocityContext ctx = new VelocityContext();
+        Writer w = new FileWriter(new File(dir, "hibernate.cfg.xml"));
+        try {
+            ctx.put("conf", conf);
+            tp.merge(ctx, w);
+            w.flush();
+        } finally {
+            w.close();
         }
     }
 
@@ -44,6 +63,7 @@ public class Generator {
         VelocityContext ctx = new VelocityContext();
         Writer w = new FileWriter(f);
         try {
+            ctx.put("db", getDB());
             ctx.put("conf", conf);
             ctx.put("table", tc);
             tp.merge(ctx, w);

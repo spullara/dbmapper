@@ -41,7 +41,11 @@ public class GenerateConfig {
     private String driver;
     @Argument(alias = "ext", description = "File extension for the generated code")
     private String extension = "java";
-
+    @Argument(description = "Generate hibernate.cfg.xml to this directory")
+    private String hibernate;
+    @Argument(description = "Enable xml binding generation")
+    private boolean jaxb = false;
+    
     private List<TableConfig> tables;
 
     public GenerateConfig() {
@@ -208,5 +212,21 @@ public class GenerateConfig {
 
     public void setExtension(String extension) {
         this.extension = extension;
+    }
+
+    public String getHibernate() {
+        return hibernate;
+    }
+
+    public void setHibernate(String hibernate) {
+        this.hibernate = hibernate;
+    }
+
+    public Boolean getJaxb() {
+        return jaxb;
+    }
+
+    public void setJaxb(Boolean jaxb) {
+        this.jaxb = jaxb;
     }
 }

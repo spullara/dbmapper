@@ -34,11 +34,11 @@ includeTargets << new File("${grailsHome}/scripts/Compile.groovy")
 pluginHome = new File("./plugins").listFiles().find {
     it.name.startsWith('dbmapper-')}
 
-task('default': "Generates code for all the domain classes in the database") {
+target('default': "Generates code for all the domain classes in the database") {
     depends(generateDomainClasses)
 }
 
-task('generateDomainClasses': "Generate for all all the domain classes in the database") {
+target('generateDomainClasses': "Generate for all all the domain classes in the database") {
     profile("compiling config") {
         compile()
     }
@@ -80,7 +80,6 @@ task('generateDomainClasses': "Generate for all all the domain classes in the da
 
     profile("generate the classes") {
         Properties p = config.dataSource.toProperties();
-        println(p)
         String username = p.username
         assert username != null
         String password = p.getProperty("password", "")
@@ -93,13 +92,14 @@ task('generateDomainClasses': "Generate for all all the domain classes in the da
             Class generatorClass = classLoader.loadClass("com.moonspider.dbmap.Generator")
             Method generator = generatorClass.getMethod("main", String[].class);
             String[] generatorArgs = [
-                    "-type", "gorm",
+                    "-type", "ejb",
                     "-d", "grails-app/domain",
                     "-u", username,
                     "-p", password,
                     "-package", "",
-                    "-ext", "groovy",
+                    "-ext", "java",
                     "-driver", driver,
+                    "-hibernate", "grails-app/conf/hibernate",
                     "-url", url]
             Object[] callArgs = [generatorArgs]
             generator.invoke(null, callArgs)
@@ -109,7 +109,6 @@ task('generateDomainClasses': "Generate for all all the domain classes in the da
             event("StatusFinal", ["Failed to generate domain classes: ${e.message}"])
             exit(1)
         }
+        println("Successfully generated domain classes")
     }
-
 }
-
