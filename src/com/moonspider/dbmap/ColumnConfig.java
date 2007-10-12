@@ -4,13 +4,8 @@
 
 package com.moonspider.dbmap;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.xml.bind.annotation.XmlElement;
+import java.util.*;
 
 public class ColumnConfig {
 
@@ -35,20 +30,26 @@ public class ColumnConfig {
     private ColumnConfig fkColumn;
     /* columns that point to us as a foreign key, if any */
     private List<ColumnConfig> importedKeys = new ArrayList<ColumnConfig>();
-    ColumnConfig() { }
-    public ColumnConfig(TableConfig t) { tableConfig = t; }
+
+    ColumnConfig() {
+    }
+
+    public ColumnConfig(TableConfig t) {
+        tableConfig = t;
+    }
+
     /* construct column spec using default settings */
     public ColumnConfig(DBColumn col, TableConfig t) {
         this(t);
         merge(col);
     }
-    
+
     /* accept any default settings only for things not already set */
     public void merge(DBColumn col) {
         if (name == null) {
             name = col.getName();
         }
-        
+
         if (fieldName == null) {
             fieldName = Util.toPropName(name);
         }
@@ -62,8 +63,8 @@ public class ColumnConfig {
             if (javaType == null) {
                 throw new RuntimeException(
                         "Cannot map SQL type to java: SQL type=" + col.getType()
-                        + " for table=" + getTableConfig().getName()
-                        + " column=" + getName()
+                                + " for table=" + getTableConfig().getName()
+                                + " column=" + getName()
                 );
             }
         }
@@ -73,10 +74,16 @@ public class ColumnConfig {
         primKey = col.isPrimKey();
         unique = (col.isUnique() || primKey);
     }
-    
+
     @XmlElement(name = "getter-access")
-    public String getGetterAccess() { return getterAccess; }
-    public void setGetterAccess(String ga) { getterAccess = ga; }
+    public String getGetterAccess() {
+        return getterAccess;
+    }
+
+    public void setGetterAccess(String ga) {
+        getterAccess = ga;
+    }
+
     @XmlElement(name = "setter-access")
     public String getSetterAccess() {
         if (setterAccess != null) {
@@ -84,9 +91,12 @@ public class ColumnConfig {
         }
         return (getFkey() != null || isPrimKey()) ? "private" : "public";
     }
-    public void setSetterAccess(String sa) { setterAccess = sa; }
-    
-    
+
+    public void setSetterAccess(String sa) {
+        setterAccess = sa;
+    }
+
+
     @XmlElement(name = "field-name")
     public String getFieldName() {
         return fieldName;
@@ -95,7 +105,7 @@ public class ColumnConfig {
     public void setFieldName(String fieldName) {
         this.fieldName = fieldName;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -103,15 +113,21 @@ public class ColumnConfig {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     @XmlElement(name = "xml-transient")
-    public boolean isXmlTransient() { return xmlTransient; }
-    public void setXmlTransient(boolean b) { xmlTransient = b; }
-    
+    public boolean isXmlTransient() {
+        return xmlTransient;
+    }
+
+    public void setXmlTransient(boolean b) {
+        xmlTransient = b;
+    }
+
     @XmlElement(name = "xml-attribute-name")
     public String getXmlAttributeName() {
         return xmlAttributeName;
     }
+
     public void setXmlAttributeName(String s) {
         xmlAttributeName = s;
     }
@@ -120,13 +136,19 @@ public class ColumnConfig {
     public String getXmlElementName() {
         return xmlElementName;
     }
+
     public void setXmlElementName(String s) {
         xmlElementName = s;
     }
-    
+
     @XmlElement(name = "java-type")
-    public String getJavaType() { return javaType; }
-    public void setJavaType(String jt) { javaType = jt; }
+    public String getJavaType() {
+        return javaType;
+    }
+
+    public void setJavaType(String jt) {
+        javaType = jt;
+    }
 
     public String getFieldUpcase() {
         if (fieldName.length() == 1) {
@@ -134,7 +156,7 @@ public class ColumnConfig {
         }
         return Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
     }
-    
+
     public String getXmlAnnotation() {
         String ret = null;
         if (this.isXmlTransient()) {
@@ -143,32 +165,54 @@ public class ColumnConfig {
             ret = "@XmlAttribute(name = \"" + getXmlAttributeName() + "\")";
         } else if (getXmlElementName() != null) {
             ret = "@XmlElement(name = \"" + getXmlElementName() + "\")";
+        } else if (isPrimKey()) {
+            ret = "    @XmlAttribute";
         }
         return ret;
     }
-    public List<ColumnConfig> getImportedKeys() { return importedKeys; }
-    public ColumnConfig getFkey() { return fkColumn; } 
-    public void setFkey(ColumnConfig otherColumn) { fkColumn = otherColumn; }
-    public TableConfig getTableConfig() { return tableConfig; }
-    public boolean isPrimKey() { return primKey; }
-    public boolean isNullable() { return nullable; }
-    public boolean isUnique() { return unique; }
+
+    public List<ColumnConfig> getImportedKeys() {
+        return importedKeys;
+    }
+
+    public ColumnConfig getFkey() {
+        return fkColumn;
+    }
+
+    public void setFkey(ColumnConfig otherColumn) {
+        fkColumn = otherColumn;
+    }
+
+    public TableConfig getTableConfig() {
+        return tableConfig;
+    }
+
+    public boolean isPrimKey() {
+        return primKey;
+    }
+
+    public boolean isNullable() {
+        return nullable;
+    }
+
+    public boolean isUnique() {
+        return unique;
+    }
 
     public String getAnnotation() {
         String ret = null;
         if (isPrimKey()) {
             ret = "@Id\n"
-                + "    @XmlAttribute\n"
-                + "    @GeneratedValue(strategy=GenerationType.IDENTITY)\n"
-                + "    @Column(name=\"" + getName() + "\")";
+                    + "    @GeneratedValue(strategy=GenerationType.IDENTITY)\n"
+                    + "    @Column(name=\"" + getName() + "\")";
         } else if (getFkey() != null) {
             ret = "@Column(name=\"" + getName()
-            + "\", insertable=false, updatable=false)";
+                    + "\", insertable=false, updatable=false)";
         } else {
             ret = "@Column(name=\"" + getName() + "\", nullable=" + isNullable() + ")";
         }
         if ("java.sql.Blob".equals(getJavaType())
-             || "java.sql.Clob".equals(getJavaType())) {
+                || "java.sql.Clob".equals(getJavaType())) {
             ret += "\n    @Lob @Basic(fetch = FetchType.LAZY)";
         }
         if (temporalType) {
@@ -178,6 +222,7 @@ public class ColumnConfig {
     }
 
     private static final Map<String, String> TYPEMAP = new HashMap<String, String>();
+
     static {
         TYPEMAP.put("TIMESTAMP", "java.util.Date");
         TYPEMAP.put("DATE", "java.util.Date");
@@ -191,7 +236,9 @@ public class ColumnConfig {
         TYPEMAP.put("BIGINT", "java.math.BigInteger");
         TYPEMAP.put("BOOLEAN", "boolean");
     }
+
     private static final Map<String, String> TYPEMAP_NULLABLE = new HashMap<String, String>();
+
     static {
         TYPEMAP_NULLABLE.put("TIMESTAMP", "java.util.Date");
         TYPEMAP_NULLABLE.put("DATE", "java.util.Date");
@@ -206,6 +253,7 @@ public class ColumnConfig {
         TYPEMAP_NULLABLE.put("DOUBLE", "Double");
         TYPEMAP_NULLABLE.put("BOOLEAN", "Boolean");
     }
+
     public String toString() {
         String s = "[ColumnConfig: name=" + name + " unique=" + isUnique();
         ColumnConfig fk = getFkey();

@@ -1,13 +1,19 @@
+#if ($conf.pkg != "")
 package $conf.pkg;
+#end
 
 import java.util.*;
 import javax.persistence.*;
+#if ($conf.jaxb)
 import javax.xml.bind.annotation.*;
+#end
 
 @Entity
 @Table(name="$table.name")
+#if ($conf.jaxb)
 @XmlRootElement
 @XmlAccessorType(value = javax.xml.bind.annotation.XmlAccessType.PROPERTY)
+#end
 public class ${table.className}
 #if ($table.tableExtends) extends $table.tableExtends
 #elseif ($conf.globalExtends) extends $conf.globalExtends
@@ -19,7 +25,10 @@ public class ${table.className}
     // Columns
     
 #foreach($col in $table.columns)
-#if($col.xmlAnnotation)    $col.xmlAnnotation
+#if($col.xmlAnnotation)
+#if ($conf.jaxb)
+$col.xmlAnnotation
+#end
 #end
     $col.annotation
     $col.getterAccess $col.javaType get${col.fieldUpcase}() {
@@ -36,7 +45,7 @@ public class ${table.className}
     
 #foreach($rel in $table.relations)
     // Relation name: ${rel.name}
-#if ($rel.xmlTransient)
+#if ($conf.jaxb && $rel.xmlTransient)
     @XmlTransient
 #end    
     @${rel.cardinality}(

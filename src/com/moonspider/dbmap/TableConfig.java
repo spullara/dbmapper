@@ -80,7 +80,7 @@ public class TableConfig {
             name = table.getName();
         }
         if (className == null) {
-            className = Util.upcase(table.getName());
+            className = Util.dbToName(table.getName());
         }
         for (DBColumn dbcol : table.getColumns()) {
             ColumnConfig cconf = findColumn(dbcol.getName());
@@ -255,10 +255,10 @@ public class TableConfig {
             } else {
                 propName = left.getName();
             }
-            if (propName.endsWith("_id") && !propName.equals("_id")) {
+            if (propName.toLowerCase().endsWith("_id") && !propName.equalsIgnoreCase("_id")) {
                 propName = propName.substring(0, propName.length() - 3);
             }
-            if (propName.endsWith("_ref") && !propName.equals("_ref")) {
+            if (propName.toLowerCase().endsWith("_ref") && !propName.equalsIgnoreCase("_ref")) {
                 propName = propName.substring(0, propName.length() - 4);
             }
             propName = Util.toPropName(propName);
@@ -274,8 +274,8 @@ public class TableConfig {
         if (!right.isPrimKey() && !isJoin 
                 && !right.getName().startsWith(left.getTableConfig().getName())) {
             String rightName = right.getName().replace(left.getTableConfig().getName(), "");
-            rightName = rightName.replace("_id", "");
-            rightName = rightName.replace("_ref", "");
+            rightName = rightName.replace("_[iI][dD]", "");
+            rightName = rightName.replace("_[rR][eE][fF]", "");
             String newname = Util.toPropName(rightName);
             propName = newname + Util.upcase(propName);
             
@@ -321,7 +321,7 @@ public class TableConfig {
         if (rel.getBaseType() == null) rel.setBaseType(type);
         rel.setMappedBy(mappedBy);
         rel.setJoinColumn(join);
-        rel.setFieldName(Util.toPropName(Util.unId(method)));
+        rel.setFieldName(Util.lowcase(Util.unId(method)));
         return rel;
     }
 

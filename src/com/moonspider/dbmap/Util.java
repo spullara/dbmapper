@@ -9,11 +9,19 @@ public final class Util {
     private Util() { }
     
     public static String toPropName(String s) {
-        s = upcase(s);
+        s = dbToName(s);
+        return lowcase(s);
+    }
+
+    public static String lowcase(String s) {
         return s.substring(0, 1).toLowerCase() + s.substring(1);
     }
 
     public static String upcase(String s) {
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
+    public static String dbToName(String s) {
         s = s.toLowerCase();
         StringBuffer sb = new StringBuffer();
         char c = s.charAt(0);
