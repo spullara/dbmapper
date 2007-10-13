@@ -1,1 +1,0 @@
-../../../plugin/scripts/GenerateDomainClasses.groovy
