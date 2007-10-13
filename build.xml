@@ -92,7 +92,13 @@
         <copy todir="${build.home}">
             <fileset dir="src" includes="**/*.template"/>
         </copy>
-        <jar destfile="${dist.home}/${app.name}.jar"
+        <exec executable="svn" output="svninfo">
+            <arg value="info"/>
+            <arg value="--xml"/>
+        </exec>
+        <xmlproperty file="svninfo"/>
+        <delete file="svninfo"/>
+        <jar destfile="${dist.home}/${app.name}-r${info.entry.commit(revision)}.jar"
              basedir="${build.home}"
              excludes="**/*UT.class">
             <zipgroupfileset dir="lib" includes="**/*.jar"/>
