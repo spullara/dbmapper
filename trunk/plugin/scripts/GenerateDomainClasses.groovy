@@ -92,12 +92,9 @@ target('generateDomainClasses': "Generate for all all the domain classes in the 
             Class generatorClass = classLoader.loadClass("com.moonspider.dbmap.Generator")
             Method generator = generatorClass.getMethod("main", String[].class);
             String[] generatorArgs = [
-                    "-type", "ejb",
                     "-d", "grails-app/domain",
                     "-u", username,
                     "-p", password,
-                    "-package", "",
-                    "-ext", "java",
                     "-driver", driver,
                     "-hibernate", "grails-app/conf/hibernate",
                     "-url", url]

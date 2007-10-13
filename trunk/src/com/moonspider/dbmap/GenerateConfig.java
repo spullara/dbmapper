@@ -28,7 +28,7 @@ public class GenerateConfig {
     @Argument(description = "The url of the database")
     private String url;
     @Argument(alias = "package", description = "The target package")
-    private String pkg;
+    private String pkg = "";
     @Argument(alias = "u", description = "Database user")
     private String user = "sa";
     @Argument(alias = "p", description = "Database password")
