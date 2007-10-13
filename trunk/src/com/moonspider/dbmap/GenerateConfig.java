@@ -21,8 +21,8 @@ import java.util.List;
 public class GenerateConfig {
 
 
-    @Argument(alias = "t", description = "The type to generate, either 'ejb' or 'gorm'")
-    private String type = "ejb";
+    @Argument(alias = "t", description = "The type to generate, either 'jpa' or 'gorm' (experimental)")
+    private String type = "jpa";
     @Argument(alias = "d", description = "Destination directory")
     private String destinationDirectory;
     @Argument(description = "The url of the database")

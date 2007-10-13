@@ -54,7 +54,7 @@
             dist.home = ${dist.home}
             app.name = ${app.name}
         </echo>
-    	<!--<fail message="intentionally break the build"/>-->
+        <!--<fail message="intentionally break the build"/>-->
     </target>
 
     <!-- ========================= -->
@@ -64,15 +64,15 @@
     <target name="build" depends="init,clean,compile,test,fail-if-junit-failed"
             description="clean, compile, test"/>
 
-   <target name="run" depends="compile" description="compile + run generator">
-      <java classname="com.moonspider.dbmap.Generator" fork="true">
-          <arg value="generate.xml"/>
+    <target name="run" depends="compile" description="compile + run generator">
+        <java classname="com.moonspider.dbmap.Generator" fork="true">
+            <arg value="generate.xml"/>
             <classpath>
-               <path refid="test.db.classpath"/>
-               <pathelement location="${dist.home}/${app.name}.jar"/>
-               <path refid="project.classpath"/>
+                <path refid="test.db.classpath"/>
+                <pathelement location="${dist.home}/${app.name}.jar"/>
+                <path refid="project.classpath"/>
             </classpath>
-      </java>
+        </java>
     </target>
 
     <!-- target: compile -->
@@ -100,7 +100,8 @@
         <delete file="svninfo"/>
         <jar destfile="${dist.home}/${app.name}-r${info.entry.commit(revision)}.jar"
              basedir="${build.home}"
-             excludes="**/*UT.class">
+             excludes="**/*UT.class"
+             manifest="manifest">
             <zipgroupfileset dir="lib" includes="**/*.jar"/>
         </jar>
     </target>
