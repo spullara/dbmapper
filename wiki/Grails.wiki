@@ -1,0 +1,16 @@
+#summary Using dbmapper from Grails
+#labels Featured,Phase-Deploy
+
+= Introduction =
+
+If you follow the GORM rules for tables in your database, this should work great.
+
+= Install the plugin =
+
+`grails install-plugin dbmapper`
+
+= Generate the classes =
+
+`grails generate-domain-classes`
+
+This will create JPA domain classes in your `grails-app/domain` directory along with a `hibernate.cfg.xml` file within `grails-app/conf/hibernate`.
