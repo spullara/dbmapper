@@ -103,8 +103,12 @@ public class Generator {
                     gen.generate();
                 }
             }
-        } catch (IllegalArgumentException iae) {
-            Args.usage(gen);
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            if (new Boolean(System.getProperty("debug", "false"))) {
+                e.printStackTrace();
+            }
+            Args.usage(gc);
             System.exit(1);
         }
 

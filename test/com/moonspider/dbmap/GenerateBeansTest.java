@@ -19,7 +19,7 @@ import java.util.Properties;
  * To change this template use File | Settings | File Templates.
  */
 public class GenerateBeansTest extends TestCase {
-    public void testGenerateEJB() throws Exception {
+    public void testGenerateJPA() throws Exception {
         Driver driver = new org.h2.Driver();
         Properties p = new Properties();
         p.put("user", "bt");
