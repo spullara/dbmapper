@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="checkout/dbmapper/lib/dbmap-r11.jar"/>
+	<classpathentry kind="lib" path="lib/cli-11.jar"/>
+	<classpathentry kind="lib" path="lib/javaee.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/activation.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb-impl.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb-xjc.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jaxb1-impl.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb/jsr173_1.0_api.jar"/>
+	<classpathentry kind="lib" path="lib/velocity/velocity-dep-1.5.jar"/>
+	<classpathentry kind="lib" path="test-lib/dbmigration-r40.jar"/>
+	<classpathentry kind="lib" path="test-lib/h2.jar"/>
+	<classpathentry kind="lib" path="test-lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="test-lib/junit-4.0.jar"/>
+	<classpathentry kind="lib" path="test-lib/mysql-connector-java-5.0.5-bin.jar"/>
+	<classpathentry kind="lib" path="test-lib/postgresql-8.1-407.jdbc3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
