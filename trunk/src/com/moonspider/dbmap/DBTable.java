@@ -22,10 +22,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * @author David Brown
+ * @author David Brown initial version
+ * @author Sam Pullara added use of schema
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class DBTable {
 
@@ -35,11 +34,11 @@ public class DBTable {
     private List<DBKey> fkeys = new ArrayList<DBKey>();
     private boolean isJoinTable = false;
 
-    public DBTable(String name, DatabaseMetaData meta) throws SQLException {
+    public DBTable(String name, String schema, DatabaseMetaData meta) throws SQLException {
         this.name = name;
         ResultSet rs;
-        List<String> uniqueColumns = getUniqueColumnNames(name, meta);
-        rs = meta.getColumns(null, null, name, null);
+        List<String> uniqueColumns = getUniqueColumnNames(name, schema, meta);
+        rs = meta.getColumns(null, schema, name, null);
         while (rs.next()) {
             String colName = rs.getString("COLUMN_NAME");
             boolean nullAllowed = rs.getString("IS_NULLABLE").equals("YES");
@@ -51,17 +50,16 @@ public class DBTable {
             cols.put(colName, dbcol);
         }
         /* find primary keys */
-        rs = meta.getPrimaryKeys(null, null, name);
+        rs = meta.getPrimaryKeys(null, schema, name);
         while (rs.next()) {
             String colName = rs.getString("COLUMN_NAME");
-            //System.err.println("primkey of table " + name + " is " + colName);
             cols.get(colName).setPrimKey(true);
         }
-        rs = meta.getExportedKeys(null, null, name);
+        rs = meta.getExportedKeys(null, schema, name);
         while (rs.next()) {
             keys.add(new DBKey(rs));
         }
-        rs = meta.getImportedKeys(null, null, name);
+        rs = meta.getImportedKeys(null, schema, name);
         while (rs.next()) {
             fkeys.add(new DBKey(rs));
         }
@@ -90,11 +88,12 @@ public class DBTable {
      * Then neither repository_id nor name are considered unique (at least
      * just considering the above constraint).
      */
-    private static List<String> getUniqueColumnNames(String table, DatabaseMetaData meta)
+    private static List<String> getUniqueColumnNames(String table, String schema, DatabaseMetaData meta)
     throws SQLException {
         List<String> ret = new ArrayList<String>();
         Map<String, String> indicesToCol = new HashMap<String, String>();
-        ResultSet rs = meta.getIndexInfo(null, null, table, true, false);
+        // No need for exact statistics
+        ResultSet rs = meta.getIndexInfo(null, schema, table, true, true);
         while (rs.next()) {
             String col = rs.getString("COLUMN_NAME");
             ret.add(col);

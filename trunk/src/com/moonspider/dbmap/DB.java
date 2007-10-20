@@ -14,9 +14,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -29,12 +27,12 @@ import java.util.TreeMap;
 public class DB {
     private Map<String, DBTable> tables = new TreeMap<String, DBTable>();
 
-    public DB(Connection conn) throws SQLException {
+    public DB(Connection conn, String schema) throws SQLException {
         DatabaseMetaData meta = conn.getMetaData();
-        ResultSet rs = meta.getTables(null, null, "%", TABLE_TYPE);
+        ResultSet rs = meta.getTables(null, schema, "%", TABLE_TYPE);
         while (rs.next()) {
             String name = rs.getString("TABLE_NAME");
-            DBTable table = new DBTable(name, meta);
+            DBTable table = new DBTable(name, schema, meta);
             tables.put(name, table);
         }
         rs.close();
