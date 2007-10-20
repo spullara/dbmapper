@@ -79,7 +79,7 @@ public class Generator {
         props.put("user", conf.getUser());
         props.put("password", conf.getPassword());
         Connection conn = driver.connect(conf.getUrl(), props);
-        DB db = new DB(conn);
+        DB db = new DB(conn, null);
         conn.close();
         return db;
     }

@@ -45,6 +45,8 @@ public class GenerateConfig {
     private String hibernate;
     @Argument(description = "Enable xml binding generation")
     private boolean jaxb = false;
+    @Argument(description = "Specify the non-default schema to use")
+    private String schema;
     
     private List<TableConfig> tables;
 
@@ -228,5 +230,13 @@ public class GenerateConfig {
 
     public void setJaxb(Boolean jaxb) {
         this.jaxb = jaxb;
+    }
+
+    public String getSchema() {
+        return schema;
+    }
+
+    public void setSchema(String schema) {
+        this.schema = schema;
     }
 }

@@ -12,7 +12,7 @@ public class DBTest extends AbstractDBTest {
     
     protected void setUp() throws Exception {
         super.setUp();
-        db = new DB(conn);
+        db = new DB(conn, null);
     }
 
     public void testGetTables() {
