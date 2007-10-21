@@ -14,3 +14,9 @@ If you follow the GORM rules for tables in your database, this should work great
 `grails generate-domain-classes`
 
 This will create JPA domain classes in your `grails-app/domain` directory along with a `hibernate.cfg.xml` file within `grails-app/conf/hibernate`.
+
+= Modify your DataSource =
+
+You need to modify your main DataSource definition to support annotated Hibernate classes:
+
+`configClass = GrailsAnnotationConfiguration.class`
