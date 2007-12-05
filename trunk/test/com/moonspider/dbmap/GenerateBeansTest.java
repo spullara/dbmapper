@@ -24,7 +24,7 @@ public class GenerateBeansTest extends TestCase {
         Properties p = new Properties();
         p.put("user", "bt");
         p.put("password", "");
-        Connection conn = driver.connect("jdbc:h2:mem:test_migration;DB_CLOSE_DELAY=-1", p);
+        Connection conn = driver.connect("jdbc:h2:mem:test_migration3;DB_CLOSE_DELAY=-1", p);
         Migrate.sqlScriptMigrator(conn, "test-data/test1.sql");
         Generator.main(new String[] {
                 "-type", "gorm",
@@ -33,7 +33,7 @@ public class GenerateBeansTest extends TestCase {
                 "-p", "",
                 "-package", "test.example",
                 "-ext", "groovy",
-                "-url", "jdbc:h2:mem:test_migration2;DB_CLOSE_DELAY=-1",
+                "-url", "jdbc:h2:mem:test_migration3;DB_CLOSE_DELAY=-1",
         });
     }
 

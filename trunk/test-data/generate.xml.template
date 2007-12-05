@@ -10,26 +10,26 @@
 
     <table>
         <class>User</class>
-        <name>gauntlet_user</name>
+        <name>g123_user</name>
     </table>
     <table>
         <class>Lock</class>
-        <name>path_lock</name>
+        <name>doc3_lock</name>
     </table>
     <table>
-        <name>gauntlet_version</name>
+        <name>g123_version</name>
 	<skip>true</skip>
     </table>
     <table>
-        <name>prev_succ_build</name>
+        <name>prev_succ_table1</name>
 	<skip>true</skip>
     </table>
     <table>
-        <name>build_fixed_by</name>
+        <name>table1_fixed_by</name>
 	<skip>true</skip>
     </table>
     <table>
-        <name>svnlog</name>
+        <name>service1log</name>
         <column>
             <name>COMMIT_DATE</name>
             <field-name>date</field-name>
@@ -40,28 +40,28 @@
         </column>
     </table>
     <table>
-        <name>svnlog_path</name>
+        <name>service1log_doc3</name>
         <column>
             <name>COMMIT_ACTION</name>
             <field-name>action</field-name>
         </column>
     </table>
     <table>
-        <name>test_result</name>
+        <name>thing2_doc5</name>
         <column>
             <name>DURATION</name>
             <field-name>time</field-name>
         </column>
     </table>
     <table>
-        <name>suite_result</name>
+        <name>box1_doc5</name>
         <column>
             <name>DURATION</name>
             <field-name>time</field-name>
         </column>
     </table>
     <table>
-        <name>property</name>
+        <name>prop2</name>
         <extra-body>
 	</extra-body>
     </table>
