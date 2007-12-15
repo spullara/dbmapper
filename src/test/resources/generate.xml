@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <generate-config>
-    <destination-directory>@test.dest.dir@</destination-directory>
+    <destination-directory>target/test-classes</destination-directory>
     <extends>Object</extends>
     <user>bt</user>
     <jaxb>true</jaxb>
     <password></password>
     <package>gsc.ci.ejb</package>
-    <url>@test.db.url@</url>
+    <url>jdbc:h2:mem:test_migration;DB_CLOSE_DELAY=-1</url>
 
     <table>
         <class>User</class>
@@ -18,15 +17,15 @@
     </table>
     <table>
         <name>g123_version</name>
-	<skip>true</skip>
+        <skip>true</skip>
     </table>
     <table>
         <name>prev_succ_table1</name>
-	<skip>true</skip>
+        <skip>true</skip>
     </table>
     <table>
         <name>table1_fixed_by</name>
-	<skip>true</skip>
+        <skip>true</skip>
     </table>
     <table>
         <name>service1log</name>
@@ -63,6 +62,6 @@
     <table>
         <name>prop2</name>
         <extra-body>
-	</extra-body>
+        </extra-body>
     </table>
 </generate-config>
