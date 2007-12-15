@@ -13,18 +13,11 @@ package com.moonspider.dbmap;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @author David Brown initial version
  * @author Sam Pullara added use of schema
- *
  */
 public class DBTable {
 
@@ -45,8 +38,8 @@ public class DBTable {
             int sqlType = rs.getInt("DATA_TYPE");
             int colSize = rs.getInt("COLUMN_SIZE");
             DBColumn dbcol =
-                new DBColumn(colName, sqlType, nullAllowed,
-                        colSize, uniqueColumns.contains(colName));
+                    new DBColumn(colName, sqlType, nullAllowed,
+                            colSize, uniqueColumns.contains(colName));
             cols.put(colName, dbcol);
         }
         /* find primary keys */
@@ -70,16 +63,36 @@ public class DBTable {
         Collections.sort(fkeys, DBKey.COMP);
     }
 
-    public String getName() { return name; }
-    public boolean isJoinTable() { return isJoinTable; }
-    public List<DBKey> getKeys() { return keys; }
-    public List<DBKey> getFkeys() { return fkeys; }
-    public Collection<DBColumn> getColumns() { return cols.values(); }
-    public DBColumn getColumn(String column) { return cols.get(column); }
+    public String getName() {
+        return name;
+    }
 
-    public String toString() { return getName(); }
-    
-    /** retrieve column names that are considered to be <i>singularly</i>
+    public boolean isJoinTable() {
+        return isJoinTable;
+    }
+
+    public List<DBKey> getKeys() {
+        return keys;
+    }
+
+    public List<DBKey> getFkeys() {
+        return fkeys;
+    }
+
+    public Collection<DBColumn> getColumns() {
+        return cols.values();
+    }
+
+    public DBColumn getColumn(String column) {
+        return cols.get(column);
+    }
+
+    public String toString() {
+        return getName();
+    }
+
+    /**
+     * retrieve column names that are considered to be <i>singularly</i>
      * unique by the DB.  This excludes columns that have a <i>compound</i>
      * unique constraint.  For example, if the table has a constraint:
      * <pre>
@@ -89,7 +102,7 @@ public class DBTable {
      * just considering the above constraint).
      */
     private static List<String> getUniqueColumnNames(String table, String schema, DatabaseMetaData meta)
-    throws SQLException {
+            throws SQLException {
         List<String> ret = new ArrayList<String>();
         Map<String, String> indicesToCol = new HashMap<String, String>();
         // No need for exact statistics
@@ -108,5 +121,5 @@ public class DBTable {
             }
         }
         return ret;
-    }    
+    }
 }
