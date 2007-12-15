@@ -14,9 +14,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @author David Brown
@@ -36,6 +34,38 @@ public class DB {
             tables.put(name, table);
         }
         rs.close();
+
+        // Get all the indexed columns
+        Set<String> indexes = new HashSet<String>();
+        for (DBTable table : tables.values()) {
+            ResultSet rs2 = meta.getIndexInfo(null, schema, table.getName(), false, true);
+            while (rs2.next()) {
+                String index = rs2.getString("TABLE_NAME") + "." + rs2.getString("COLUMN_NAME");
+                indexes.add(index);
+            }
+        }
+
+        // Verify all the keys are covered
+        for (DBTable table : tables.values()) {
+            for (DBKey key : table.getKeys()) {
+                checkIndex(indexes, table.getName(), key.getColumn());
+            }
+            for (DBKey key : table.getFkeys()) {
+                checkIndex(indexes, key.getFktable(), key.getFkcolumn());
+            }
+        }
+    }
+
+    private static Set<String> warned = new HashSet<String>();
+
+    private void checkIndex(Set<String> indexes, String name, String column) {
+        String index = name + "." + column;
+        if (!indexes.contains(index)) {
+            if (!warned.contains(index)) {
+                System.err.println("WARNING: No index on " + index);
+                warned.add(index);
+            }
+        }
     }
 
     public Collection<DBTable> getTables() { return tables.values(); }

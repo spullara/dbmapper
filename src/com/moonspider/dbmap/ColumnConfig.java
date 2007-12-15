@@ -230,10 +230,11 @@ public class ColumnConfig {
         TYPEMAP.put("SMALLINT", "int");
         TYPEMAP.put("BIT", "boolean");
         TYPEMAP.put("VARCHAR", "String");
+        TYPEMAP.put("LONGVARCHAR", "String");
         TYPEMAP.put("BINARY", "java.io.Serializable");
         TYPEMAP.put("DOUBLE", "double");
         TYPEMAP.put("OTHER", "Object");
-        TYPEMAP.put("BIGINT", "java.math.BigInteger");
+        TYPEMAP.put("BIGINT", "long");
         TYPEMAP.put("BOOLEAN", "boolean");
         TYPEMAP.put("CHAR", "char");
     }
@@ -245,9 +246,10 @@ public class ColumnConfig {
         TYPEMAP_NULLABLE.put("DATE", "java.util.Date");
         TYPEMAP_NULLABLE.put("INTEGER", "Integer");
         TYPEMAP_NULLABLE.put("SMALLINT", "Integer");
-        TYPEMAP_NULLABLE.put("BIGINT", "java.math.BigInteger");
+        TYPEMAP_NULLABLE.put("BIGINT", "Long");
         TYPEMAP_NULLABLE.put("BIT", "Boolean");
         TYPEMAP_NULLABLE.put("VARCHAR", "String");
+        TYPEMAP_NULLABLE.put("LONGVARCHAR", "String");
         TYPEMAP_NULLABLE.put("BINARY", "java.io.Serializable");
         TYPEMAP_NULLABLE.put("ARRAY", "Object[]");
         TYPEMAP_NULLABLE.put("OTHER", "Object");

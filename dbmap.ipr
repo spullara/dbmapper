@@ -2,6 +2,13 @@
 <project relativePaths="false" version="4">
   <component name="AntConfiguration">
     <defaultAnt bundledAnt="true" />
+    <buildFile url="file://$PROJECT_DIR$/build.xml">
+      <additionalClassPath />
+      <antReference projectDefault="true" />
+      <customJdkName value="" />
+      <maximumHeapSize value="128" />
+      <properties />
+    </buildFile>
   </component>
   <component name="BSFConsole">
     <sendcommandbycontrolenter>false</sendcommandbycontrolenter>
@@ -490,16 +497,16 @@
         <root url="jar://$PROJECT_DIR$/test-lib/h2.jar!/" />
         <root url="jar://$PROJECT_DIR$/test-lib/junit-4.0.jar!/" />
         <root url="jar://$PROJECT_DIR$/test-lib/hsqldb.jar!/" />
-        <root url="jar://$PROJECT_DIR$/test-lib/dbmigration-r40.jar!/" />
+        <root url="jar://$PROJECT_DIR$/test-lib/dbmigration-r47.jar!/" />
+        <root url="jar://$PROJECT_DIR$/test-lib/mysql-connector-java-5.0.5-bin.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES>
-        <root url="file:///Users/sam/Projects/dbmigrate/src" />
-      </SOURCES>
+      <SOURCES />
     </library>
     <library name="CLI">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/cli-10.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/cli-11.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
