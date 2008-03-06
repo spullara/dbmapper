@@ -231,7 +231,7 @@ public class ColumnConfig {
         TYPEMAP.put("BIT", "boolean");
         TYPEMAP.put("VARCHAR", "String");
         TYPEMAP.put("LONGVARCHAR", "String");
-        TYPEMAP.put("BINARY", "java.io.Serializable");
+        TYPEMAP.put("BINARY", "byte[]");
         TYPEMAP.put("DOUBLE", "double");
         TYPEMAP.put("OTHER", "Object");
         TYPEMAP.put("BIGINT", "long");
@@ -250,7 +250,7 @@ public class ColumnConfig {
         TYPEMAP_NULLABLE.put("BIT", "Boolean");
         TYPEMAP_NULLABLE.put("VARCHAR", "String");
         TYPEMAP_NULLABLE.put("LONGVARCHAR", "String");
-        TYPEMAP_NULLABLE.put("BINARY", "java.io.Serializable");
+        TYPEMAP_NULLABLE.put("BINARY", "byte[]");
         TYPEMAP_NULLABLE.put("ARRAY", "Object[]");
         TYPEMAP_NULLABLE.put("OTHER", "Object");
         TYPEMAP_NULLABLE.put("DOUBLE", "Double");
