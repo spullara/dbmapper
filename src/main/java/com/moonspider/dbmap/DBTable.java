@@ -32,29 +32,46 @@ public class DBTable {
         ResultSet rs;
         List<String> uniqueColumns = getUniqueColumnNames(name, schema, meta);
         rs = meta.getColumns(null, schema, name, null);
-        while (rs.next()) {
-            String colName = rs.getString("COLUMN_NAME");
-            boolean nullAllowed = rs.getString("IS_NULLABLE").equals("YES");
-            int sqlType = rs.getInt("DATA_TYPE");
-            int colSize = rs.getInt("COLUMN_SIZE");
-            DBColumn dbcol =
-                    new DBColumn(colName, sqlType, nullAllowed,
-                            colSize, uniqueColumns.contains(colName));
-            cols.put(colName, dbcol);
+        try {
+            while (rs.next()) {
+                String colName = rs.getString("COLUMN_NAME");
+                boolean nullAllowed = rs.getString("IS_NULLABLE").equals("YES");
+                int sqlType = rs.getInt("DATA_TYPE");
+                int colSize = rs.getInt("COLUMN_SIZE");
+                DBColumn dbcol =
+                        new DBColumn(colName, sqlType, nullAllowed,
+                                colSize, uniqueColumns.contains(colName));
+                cols.put(colName, dbcol);
+            }
+        } finally {
+            rs.close();
         }
+
         /* find primary keys */
         rs = meta.getPrimaryKeys(null, schema, name);
-        while (rs.next()) {
-            String colName = rs.getString("COLUMN_NAME");
-            cols.get(colName).setPrimKey(true);
+        try {
+            while (rs.next()) {
+                String colName = rs.getString("COLUMN_NAME");
+                cols.get(colName).setPrimKey(true);
+            }
+        } finally {
+            rs.close();
         }
         rs = meta.getExportedKeys(null, schema, name);
-        while (rs.next()) {
-            keys.add(new DBKey(rs));
+        try {
+            while (rs.next()) {
+                keys.add(new DBKey(rs));
+            }
+        } finally {
+            rs.close();
         }
         rs = meta.getImportedKeys(null, schema, name);
-        while (rs.next()) {
-            fkeys.add(new DBKey(rs));
+        try {
+            while (rs.next()) {
+                fkeys.add(new DBKey(rs));
+            }
+        } finally {
+            rs.close();
         }
         if (cols.size() == fkeys.size()) {
             isJoinTable = true;
@@ -107,19 +124,24 @@ public class DBTable {
         Map<String, String> indicesToCol = new HashMap<String, String>();
         // No need for exact statistics
         ResultSet rs = meta.getIndexInfo(null, schema, table, true, true);
-        while (rs.next()) {
-            String col = rs.getString("COLUMN_NAME");
-            ret.add(col);
-            String ind = rs.getString("INDEX_NAME");
-            if (ind != null) {
-                String compoundOther = indicesToCol.get(ind);
-                if (compoundOther != null) {
-                    ret.remove(compoundOther);
-                    ret.remove(col);
+        try {
+            while (rs.next()) {
+                String col = rs.getString("COLUMN_NAME");
+                ret.add(col);
+                String ind = rs.getString("INDEX_NAME");
+                if (ind != null) {
+                    String compoundOther = indicesToCol.get(ind);
+                    if (compoundOther != null) {
+                        ret.remove(compoundOther);
+                        ret.remove(col);
+                    }
+                    indicesToCol.put(ind, col);
                 }
-                indicesToCol.put(ind, col);
             }
+        } finally {
+            rs.close();
         }
+
         return ret;
     }
 }

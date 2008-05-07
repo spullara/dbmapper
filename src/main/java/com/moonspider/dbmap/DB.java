@@ -18,9 +18,9 @@ import java.util.*;
 
 /**
  * @author David Brown
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ *         <p/>
+ *         TODO To change the template for this generated type comment go to
+ *         Window - Preferences - Java - Code Style - Code Templates
  */
 public class DB {
     private Map<String, DBTable> tables = new TreeMap<String, DBTable>();
@@ -28,12 +28,15 @@ public class DB {
     public DB(Connection conn, String schema) throws SQLException {
         DatabaseMetaData meta = conn.getMetaData();
         ResultSet rs = meta.getTables(null, schema, "%", TABLE_TYPE);
-        while (rs.next()) {
-            String name = rs.getString("TABLE_NAME");
-            DBTable table = new DBTable(name, schema, meta);
-            tables.put(name, table);
+        try {
+            while (rs.next()) {
+                String name = rs.getString("TABLE_NAME");
+                DBTable table = new DBTable(name, schema, meta);
+                tables.put(name, table);
+            }
+        } finally {
+            rs.close();
         }
-        rs.close();
 
         // Get all the indexed columns
         Set<String> indexes = new HashSet<String>();
@@ -68,11 +71,13 @@ public class DB {
         }
     }
 
-    public Collection<DBTable> getTables() { return tables.values(); }
-        
+    public Collection<DBTable> getTables() {
+        return tables.values();
+    }
+
     public DBTable getTable(String name) {
         return tables.get(name);
     }
-        
-    private static final String[] TABLE_TYPE = { "TABLE" };
+
+    private static final String[] TABLE_TYPE = {"TABLE"};
 }
