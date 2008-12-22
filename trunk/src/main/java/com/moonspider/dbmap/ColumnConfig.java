@@ -89,7 +89,7 @@ public class ColumnConfig {
         if (setterAccess != null) {
             return setterAccess;
         }
-        return (getFkey() != null || isPrimKey()) ? "private" : "public";
+        return (getFkey() != null || isPrimKey()) ? "protected" : "public";
     }
 
     public void setSetterAccess(String sa) {
